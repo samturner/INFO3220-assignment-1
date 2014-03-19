@@ -5,6 +5,8 @@
 Dialog::Dialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Dialog),
+
+
     // Ball (Coordinate coordinate, unsigned int radius, double gravity, double xVelocity,double yVelocity)
     m_ball(Ball(Coordinate(100, 100, 500), 20, -9.8,4.5, 10)),
     m_counter(0)
