@@ -18,7 +18,8 @@ public:
          unsigned int radius,
          double gravity,
          double xVelocity,
-         double yVelocity);
+         double yVelocity,
+         QString color);
 
     //~Ball();
 
@@ -37,6 +38,8 @@ private:
     double m_gravity;
     double m_xVelocity;
     double m_yVelocity;
+
+    QString m_color;
 };
 
 #endif // BALL_H

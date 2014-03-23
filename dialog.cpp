@@ -13,7 +13,7 @@
 Dialog::Dialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Dialog),
-    m_ball(Ball(Coordinate(100, 100, 500), 20, -9.8,4.5, 10)),      // default values for the ball
+    m_ball(Ball(Coordinate(100, 100, 500), 20, -9.8,4.5, 10,"#F1C93C")),      // default values for the ball
     m_counter(0)
 {
 
@@ -21,7 +21,7 @@ Dialog::Dialog(QWidget *parent) :
     configuration config = this->readFile();
 
     if (config.getConfigEntered()) { // if we read the file in correctly
-        m_ball = Ball(Coordinate(config.getXCoordinate() + config.getRadius(), config.getYCoordinate() + config.getRadius(), 500), config.getRadius(), config.getGravity(), config.getXVelocity(), config.getYVelocity());
+        m_ball = Ball(Coordinate(config.getXCoordinate() + config.getRadius(), config.getYCoordinate() + config.getRadius(), 500), config.getRadius(), config.getGravity(), config.getXVelocity(), config.getYVelocity(), "#E86257");
     }
 
     ui->setupUi(this);

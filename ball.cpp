@@ -1,4 +1,6 @@
 #include "ball.h"
+#include <iostream>
+#include <QDebug>
 
 Ball::Ball(Coordinate coordinate) : m_coordinate(0,0,0) {
     m_coordinate = coordinate;
@@ -9,12 +11,13 @@ Ball::Ball(Coordinate coordinate, unsigned int radius) : m_coordinate(0,0,0) {
     m_radius = radius;
 }
 
-Ball::Ball(Coordinate coordinate, unsigned int radius, double gravity, double xVelocity, double yVelocity) : m_coordinate(0,0,0) {
+Ball::Ball(Coordinate coordinate, unsigned int radius, double gravity, double xVelocity, double yVelocity, QString color) : m_coordinate(0,0,0) {
     m_coordinate = coordinate;
     m_radius = radius;
     m_gravity = gravity;
     m_xVelocity = xVelocity;
     m_yVelocity = yVelocity;
+    m_color = color;
 }
 
 unsigned int Ball::getRadius() {
@@ -54,10 +57,9 @@ void Ball::render(QPainter &painter, unsigned int time)
         m_yVelocity *= -1;
     }
 
-    //std::cout << "Y Velocity: " << m_yVelocity << " X Velocity: " << m_xVelocity << std::endl;
-
     painter.setPen ( Qt::black );
-    painter.setBrush( QBrush( Qt::yellow ) );
+    painter.setBrush(QBrush(QColor(m_color)));          // Set the color
+
     painter.drawEllipse(m_coordinate.getQtRenderingXCoordinate() - (int) m_radius,
         m_coordinate.getQtRenderingYCoordinate() -(int) m_radius,
         m_radius * 2,
