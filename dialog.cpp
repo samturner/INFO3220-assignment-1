@@ -1,12 +1,6 @@
 #include "dialog.h"
 #include "ui_dialog.h"
-#include <iostream>
-#include <string>
-#include <QString>
-#include <QStringList>
-#include <QFile>
-#include <QTextStream>
-#include <QIODevice>
+
 #include <QDebug>
 
 
@@ -17,11 +11,9 @@ Dialog::Dialog(QWidget *parent) :
     m_counter(0)
 {
 
-    // Ball (Coordinate coordinate, unsigned int radius, double gravity, double xVelocity,double yVelocity)
     configuration config = this->readFile();
-
     if (config.getConfigEntered()) { // if we read the file in correctly
-        m_ball = Ball(Coordinate(config.getXCoordinate() + config.getRadius(), config.getYCoordinate() + config.getRadius(), 500), config.getRadius(), config.getGravity(), config.getXVelocity(), config.getYVelocity(), "#E86257");
+        m_ball = Ball(Coordinate(config.getXCoordinate() + config.getRadius(), config.getYCoordinate() + config.getRadius(), 500), config.getRadius(), config.getGravity(), config.getXVelocity(), config.getYVelocity(), config.getColor());
     }
 
     ui->setupUi(this);
@@ -34,42 +26,36 @@ Dialog::Dialog(QWidget *parent) :
 }
 
 configuration Dialog::readFile() {
-    QStringList options [6];           // Store the string lists
 
-    QFile inputFile("/Users/samturner/Documents/Development/INFO3220/assignment_1/.config");        // The config file location
-    configuration config(0,0,0,false);
+    QFile inputFile("/.config");        // The config file location
 
      if (inputFile.open(QIODevice::ReadOnly)) {
         QTextStream configFile(&inputFile);         // Open the file
 
-        config.setConfigEntered(true);
-        int i = 0;
+        configuration config;                       // A new configuration object
+        config.setConfigEntered(true);              // Tell the configuration that we've opened a file
 
         while (!configFile.atEnd()) {               // If we're not at the end of a file
-           QStringList tokens = configFile.readLine().split(':');   // Read the line in and split on colon
-           options[i] = tokens;
-           i++;
+           QStringList opt = configFile.readLine().split(':');   // Read the line in and split on colon
+
+           if (opt[0] == "Radius") {
+               config.setRadius(opt[1].toInt());
+           } else if (opt[0] == "InitialX") {
+               config.setXCoordinate(opt[1].toInt());
+           } else if (opt[0] == "InitialY") {
+               config.setYCoordinate(opt[1].toInt());
+           } else if (opt[0] == "Gravity") {
+               config.setGravity(opt[1].toDouble());
+           } else if (opt[0] == "XVelocity") {
+               config.setXVelocity(opt[1].toDouble());
+           } else if (opt[0] == "YVelocity") {
+               config.setYVelocity(opt[1].toDouble());
+           } else if (opt[0] == "Color") {
+               config.setColor(opt[1]);
+           }
         }
+
         inputFile.close();      // Close the file
-
-        for (int i = 0; i < sizeof(options)/sizeof(options[0]); i++) {
-                QStringList opt = options[i];
-
-                if (opt[0] == "Radius") {
-                    config.setRadius(opt[1].toInt());
-                } else if (opt[0] == "InitialX") {
-                    config.setXCoordinate(opt[1].toInt());
-                } else if (opt[0] == "InitialY") {
-                    config.setYCoordinate(opt[1].toInt());
-                } else if (opt[0] == "Gravity") {
-                    config.setGravity(opt[1].toDouble());
-                } else if (opt[0] == "XVelocity") {
-                    config.setXVelocity(opt[1].toDouble());
-                } else if (opt[0] == "YVelocity") {
-                    config.setYVelocity(opt[1].toDouble());
-                }
-         }
-
         return config;
      } else {
          // TODO: Handle this error, file cannot be opened

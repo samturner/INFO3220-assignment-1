@@ -2,9 +2,14 @@
 #define DIALOG_H
 
 #include "ball.h"
+#include "configuration.h"
+
 #include <QDialog>
 #include <QTimer>
-#include "configuration.h"
+#include <QString>
+#include <QStringList>
+#include <QFile>
+#include <QTextStream>
 
 
 namespace Ui {

@@ -1,7 +1,6 @@
 #include "configuration.h"
-#include "iostream"
 
-configuration::configuration(unsigned int xCoordinate, unsigned int yCoordinate, unsigned int radius, bool configEntered, double gravity, double xVelocity, double yVelocity) {
+configuration::configuration(unsigned int xCoordinate, unsigned int yCoordinate, unsigned int radius, bool configEntered, double gravity, double xVelocity, double yVelocity, QString color) {
     m_xCoordinate = xCoordinate;
     m_yCoordinate = yCoordinate;
     m_radius = radius;
@@ -9,6 +8,7 @@ configuration::configuration(unsigned int xCoordinate, unsigned int yCoordinate,
     m_gravity = gravity,
     m_xVelocity = xVelocity,
     m_yVelocity = yVelocity;
+    m_color = color;
 }
 
 void configuration::setConfigEntered(bool configEntered) {
@@ -39,6 +39,10 @@ void configuration::setGravity(double gravity) {
     m_gravity = gravity;
 }
 
+void configuration::setColor(QString color) {
+    m_color = color;
+}
+
 unsigned int configuration::getXCoordinate() {
     return m_xCoordinate;
 }
@@ -65,4 +69,8 @@ double configuration::getYVelocity() {
 
 bool configuration::getConfigEntered() {
     return m_configEntered;
+}
+
+QString configuration::getColor() {
+    return m_color;
 }

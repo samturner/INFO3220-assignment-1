@@ -1,5 +1,4 @@
 #include "coordinate.h"
-#include <iostream>
 
 Coordinate::Coordinate(unsigned int xCoordinate,
                        unsigned int yCoordinate,
@@ -31,7 +30,6 @@ void Coordinate::setYCoordinateToZero(int offset) {
 }
 
 void Coordinate::setYCoordinateToHeight(int offset) {
-    //std::cout << "Frame Height: " << this->getFrameHeight() << std::endl;
     m_yCoordinate = this->getFrameHeight() - offset;
 }
 
