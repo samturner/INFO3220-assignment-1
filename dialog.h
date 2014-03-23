@@ -4,6 +4,8 @@
 #include "ball.h"
 #include <QDialog>
 #include <QTimer>
+#include "configuration.h"
+
 
 namespace Ui {
 class Dialog;
@@ -22,6 +24,7 @@ public:
 
 protected:
     void paintEvent(QPaintEvent *event);
+    configuration readFile();
 
 private:
     Ui::Dialog *ui;

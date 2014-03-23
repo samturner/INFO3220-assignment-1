@@ -7,6 +7,8 @@
 class Ball
 {
 public:
+    Ball();
+
     Ball(Coordinate coordinate);
 
     Ball(Coordinate coordinate,
@@ -30,8 +32,6 @@ public:
     unsigned int getRadius();
 
 private:
-    Ball();
-
     Coordinate m_coordinate;
     unsigned int m_radius;
     double m_gravity;

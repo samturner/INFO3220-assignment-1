@@ -15,10 +15,15 @@ TEMPLATE = app
 SOURCES += main.cpp\
         dialog.cpp \
     ball.cpp \
-    coordinate.cpp
+    coordinate.cpp \
+    configuration.cpp
 
 HEADERS  += dialog.h \
     ball.h \
-    coordinate.h
+    coordinate.h \
+    configuration.h
 
 FORMS    += dialog.ui
+
+OTHER_FILES += \
+    .config

@@ -1,22 +1,78 @@
 #include "dialog.h"
 #include "ui_dialog.h"
 #include <iostream>
+#include <string>
+#include <QString>
+#include <QStringList>
+#include <QFile>
+#include <QTextStream>
+#include <QIODevice>
+#include <QDebug>
+
 
 Dialog::Dialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Dialog),
-
-
-    // Ball (Coordinate coordinate, unsigned int radius, double gravity, double xVelocity,double yVelocity)
-    m_ball(Ball(Coordinate(100, 100, 500), 20, -9.8,4.5, 10)),
+    m_ball(Ball(Coordinate(100, 100, 500), 20, -9.8,4.5, 10)),      // default values for the ball
     m_counter(0)
 {
+
+    // Ball (Coordinate coordinate, unsigned int radius, double gravity, double xVelocity,double yVelocity)
+    configuration config = this->readFile();
+
+    if (config.getConfigEntered()) { // if we read the file in correctly
+
+        qDebug() << "X [" << config.getXCoordinate() << "], Y[" << config.getYCoordinate() << "]";
+
+        m_ball = Ball(Coordinate(config.getXCoordinate(), config.getYCoordinate(), 500), config.getRadius(), -9.8,4.5, 10);
+    }
+
     ui->setupUi(this);
     this->resize(500, 500);
     this->setStyleSheet("background-color: #31B94D;");
+
     QTimer *timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(nextFrame()));
     timer->start(32);
+}
+
+configuration Dialog::readFile() {
+    QStringList options [3];           // Store the string lists
+
+    QFile inputFile("/Users/samturner/Documents/Development/INFO3220/assignment_1/.config");        // The config file location
+    configuration config(0,0,0,false);
+
+     if (inputFile.open(QIODevice::ReadOnly)) {
+        QTextStream configFile(&inputFile);         // Open the file
+
+        config.setConfigEntered(true);
+        int i = 0;
+
+        while (!configFile.atEnd()) {               // If we're not at the end of a file
+           QStringList tokens = configFile.readLine().split(':');   // Read the line in and split on colon
+           options[i] = tokens;
+           i++;
+        }
+        inputFile.close();      // Close the file
+
+        for (int i = 0; i < sizeof(options)/sizeof(options[0]); i++) {
+                QStringList opt = options[i];
+
+                if (opt[0] == "Radius") {
+                    qDebug() << opt[1].toInt();
+                    config.setRadius(opt[1].toInt());
+                } else if (opt[0] == "InitialX") {
+                    config.setXCoordinate(opt[1].toInt());
+                } else if (opt[0] == "InitialY") {
+                    config.setYCoordinate(opt[1].toInt());
+                }
+         }
+
+        return config;
+     } else {
+         // TODO: Handle this error, file cannot be opened
+         return false;
+     }
 }
 
 Dialog::~Dialog()

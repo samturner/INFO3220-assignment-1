@@ -1,6 +1,5 @@
 #include "ball.h"
 
-
 Ball::Ball(Coordinate coordinate) : m_coordinate(0,0,0) {
     m_coordinate = coordinate;
 }
