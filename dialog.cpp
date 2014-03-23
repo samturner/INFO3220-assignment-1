@@ -21,10 +21,7 @@ Dialog::Dialog(QWidget *parent) :
     configuration config = this->readFile();
 
     if (config.getConfigEntered()) { // if we read the file in correctly
-
-        qDebug() << "X [" << config.getXCoordinate() << "], Y[" << config.getYCoordinate() << "]";
-
-        m_ball = Ball(Coordinate(config.getXCoordinate(), config.getYCoordinate(), 500), config.getRadius(), -9.8,4.5, 10);
+        m_ball = Ball(Coordinate(config.getXCoordinate() + config.getRadius(), config.getYCoordinate() + config.getRadius(), 500), config.getRadius(), config.getGravity(), config.getXVelocity(), config.getYVelocity());
     }
 
     ui->setupUi(this);
@@ -37,7 +34,7 @@ Dialog::Dialog(QWidget *parent) :
 }
 
 configuration Dialog::readFile() {
-    QStringList options [3];           // Store the string lists
+    QStringList options [6];           // Store the string lists
 
     QFile inputFile("/Users/samturner/Documents/Development/INFO3220/assignment_1/.config");        // The config file location
     configuration config(0,0,0,false);
@@ -59,12 +56,17 @@ configuration Dialog::readFile() {
                 QStringList opt = options[i];
 
                 if (opt[0] == "Radius") {
-                    qDebug() << opt[1].toInt();
                     config.setRadius(opt[1].toInt());
                 } else if (opt[0] == "InitialX") {
                     config.setXCoordinate(opt[1].toInt());
                 } else if (opt[0] == "InitialY") {
                     config.setYCoordinate(opt[1].toInt());
+                } else if (opt[0] == "Gravity") {
+                    config.setGravity(opt[1].toDouble());
+                } else if (opt[0] == "XVelocity") {
+                    config.setXVelocity(opt[1].toDouble());
+                } else if (opt[0] == "YVelocity") {
+                    config.setYVelocity(opt[1].toDouble());
                 }
          }
 
