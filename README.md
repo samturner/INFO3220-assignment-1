@@ -1,4 +1,4 @@
-INFO3220-assignment-1
+INFO3220 Assignment 1
 =====================
 
 ## Extensions

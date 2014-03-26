@@ -10,7 +10,8 @@ Dialog::Dialog(QWidget *parent) :
     m_counter(0)
 {
     QWidget * wdg = new QWidget(this);
-    wdg->resize(150,50);
+    wdg->resize(150,46);
+    wdg->setStyleSheet("background-color: #FFFFFF;");
     m_pauseButton = new QPushButton(wdg);
     m_pauseButton->setText(tr("Pause"));
     connect(m_pauseButton, SIGNAL(released()), this, SLOT(handlePause()));
@@ -25,8 +26,7 @@ Dialog::Dialog(QWidget *parent) :
     this->setStyleSheet("background-color: #31B94D;");
 
     m_timer = new QTimer(this);
-    // Connect the timer
-    connect(m_timer, SIGNAL(timeout()), this, SLOT(nextFrame()));
+    connect(m_timer, SIGNAL(timeout()), this, SLOT(nextFrame()));   // connect the timer
     m_timer->start(32);
 }
 
