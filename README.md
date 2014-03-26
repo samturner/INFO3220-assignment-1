@@ -17,7 +17,7 @@ INFO3220-assignment-1
 	* **WindowWidth** `int` - The width of the window.
 
 
-* If any of these fields are missing, they are set to a default value.
+* If any of these fields are missing, they are set to a default value, as specified in the constructor.
 
 
 ## Marking Criteria

@@ -1,8 +1,8 @@
-Radius : 60
+Radius : 40
 InitialX: 100
 InitialY: 100
-XVelocity: 23
+XVelocity: 1
 YVelocity: 10
-Color:#F19B2C
-WindowHeight: 400
-WindowWidth: 900
+Color:#47629C
+WindowHeight: 600
+WindowWidth: 600

@@ -20,8 +20,6 @@ public:
          double yVelocity,
          QString color);
 
-//    ~Ball();
-
     void render(QPainter &painter, unsigned int time);
 
     bool isBottomCollision() const;

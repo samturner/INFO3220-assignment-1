@@ -1,6 +1,7 @@
 #ifndef DIALOG_H
 #define DIALOG_H
 
+#include <QPushButton>
 #include "ball.h"
 #include "configuration.h"
 
@@ -14,6 +15,7 @@ class Dialog : public QDialog
 
 public slots:
     void nextFrame();
+    void handlePause();
 
 public:
     explicit Dialog(QWidget *parent = 0);
@@ -27,6 +29,8 @@ private:
     Ball m_ball;
     configuration m_config;
     int m_counter;
+    QTimer *m_timer;
+    QPushButton *m_pauseButton;
 };
 
 #endif // DIALOG_H
