@@ -20,16 +20,16 @@ public:
          double yVelocity,
          QString color);
 
-    //~Ball();
+//    ~Ball();
 
     void render(QPainter &painter, unsigned int time);
 
-    bool isBottomCollision();
-    bool isLeftCollision();
-    bool isTopCollision();
-    bool isRightCollision();
+    bool isBottomCollision() const;
+    bool isLeftCollision() const;
+    bool isTopCollision() const;
+    bool isRightCollision() const;
 
-    unsigned int getRadius();
+    unsigned int getRadius() const;
 
 private:
     Coordinate m_coordinate;

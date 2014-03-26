@@ -11,6 +11,7 @@
 class configuration
 {
 public:
+    // Default values for the configuration
     configuration(unsigned int m_xCoordinate = 100,
                   unsigned int m_yCoordinate = 100,
                   unsigned int m_radius = 20,
@@ -20,14 +21,14 @@ public:
                   unsigned int m_windowHeight = 500,
                   unsigned int m_windowWidth = 500);
 
-    unsigned int getXCoordinate();
-    unsigned int getYCoordinate();
-    unsigned int getWindowHeight();
-    unsigned int getWindowWidth();
-    double getXVelocity();
-    double getYVelocity();
-    unsigned int getRadius();
-    QString getColor();
+    unsigned int getXCoordinate() const;
+    unsigned int getYCoordinate() const;
+    unsigned int getWindowHeight() const;
+    unsigned int getWindowWidth() const;
+    double getXVelocity() const;
+    double getYVelocity() const;
+    unsigned int getRadius() const;
+    QString getColor() const;
 
 private:
     unsigned int m_xCoordinate;

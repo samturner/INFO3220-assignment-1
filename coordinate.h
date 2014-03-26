@@ -9,9 +9,9 @@ public:
                unsigned int frameHeight,
                unsigned int frameWidth);
 
-    int getQtRenderingXCoordinate();
+    int getQtRenderingXCoordinate() const;
 
-    int getQtRenderingYCoordinate();
+    int getQtRenderingYCoordinate() const;
 
     void changeInXCoordinate(int change);
     void changeInYCoordinate(int change);
@@ -19,8 +19,8 @@ public:
     void setYCoordinateToZero(int offset);
     void setYCoordinateToHeight(int offset);
 
-    unsigned int getFrameHeight();
-    unsigned int getFrameWidth();
+    unsigned int getFrameHeight() const;
+    unsigned int getFrameWidth() const;
 
 private:
     unsigned int m_xCoordinate;

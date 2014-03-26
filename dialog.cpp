@@ -9,10 +9,12 @@ Dialog::Dialog(QWidget *parent) :
     m_config(),
     m_counter(0)
 {
+    // create the ball, getting the values from the configuration class
     m_ball = Ball(Coordinate(m_config.getXCoordinate() + m_config.getRadius(), m_config.getYCoordinate() + m_config.getRadius(), m_config.getWindowHeight(), m_config.getWindowWidth()), m_config.getRadius(), m_config.getXVelocity(), m_config.getYVelocity(), m_config.getColor());
 
     ui->setupUi(this);
 
+    // set the size of the window from the configuration class
     this->resize(m_config.getWindowWidth(), m_config.getWindowHeight());
     this->setStyleSheet("background-color: #31B94D;");
 
@@ -27,7 +29,6 @@ Dialog::~Dialog()
 }
 
 void Dialog::nextFrame() {
-    //std::cout << "RENDERING" << std::endl;
     update();
 }
 
@@ -37,7 +38,6 @@ void Dialog::paintEvent(QPaintEvent *event)
     bool animation = true;
 
     if (animation) {
-        // code for this exercise goes here
         QPainter painter(this);
         m_ball.render(painter, m_counter);
         m_counter++;
@@ -52,7 +52,6 @@ void Dialog::paintEvent(QPaintEvent *event)
         painter.setPen(pen);
         painter.setBrush(brush);
 
-        // Add before the painter draws the ellipse
         painter.drawEllipse(50, 30, 100, 100);
 
         brush.setColor("#C36241");

@@ -18,24 +18,24 @@ Ball::Ball(Coordinate coordinate, unsigned int radius, double xVelocity, double 
     m_color = color;
 }
 
-unsigned int Ball::getRadius() {
+unsigned int Ball::getRadius() const {
     return m_radius;
 }
 
-bool Ball::isBottomCollision() {
+bool Ball::isBottomCollision() const {
     // checks if the ball has fallen off the screen, if so, return true, else return false
     return m_coordinate.getQtRenderingYCoordinate() > (signed int) (m_coordinate.getFrameHeight() - (signed int) m_radius);
 }
 
-bool Ball::isLeftCollision() {
+bool Ball::isLeftCollision() const {
     return m_coordinate.getQtRenderingXCoordinate() - (signed int) m_radius < 0;   // If x is less than or equal to zero
 }
 
-bool Ball::isRightCollision() {
+bool Ball::isRightCollision() const {
     return m_coordinate.getQtRenderingXCoordinate() > (signed int) m_coordinate.getFrameWidth() - m_radius;
 }
 
-bool Ball::isTopCollision() {
+bool Ball::isTopCollision() const {
     return m_coordinate.getQtRenderingYCoordinate() < 0 + (signed int) m_radius;
 }
 

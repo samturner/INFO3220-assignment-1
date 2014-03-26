@@ -11,11 +11,11 @@ Coordinate::Coordinate(unsigned int xCoordinate,
     m_frameWidth = frameWidth;
 }
 
-int Coordinate::getQtRenderingXCoordinate() {
+int Coordinate::getQtRenderingXCoordinate() const {
     return m_frameWidth - m_xCoordinate;
 }
 
-int Coordinate::getQtRenderingYCoordinate() {
+int Coordinate::getQtRenderingYCoordinate() const {
     return m_frameHeight - m_yCoordinate;
 }
 
@@ -35,10 +35,10 @@ void Coordinate::setYCoordinateToHeight(int offset) {
     m_yCoordinate = this->getFrameHeight() - offset;
 }
 
-unsigned int Coordinate::getFrameHeight() {
+unsigned int Coordinate::getFrameHeight() const {
     return m_frameHeight;
 }
 
-unsigned int Coordinate::getFrameWidth() {
+unsigned int Coordinate::getFrameWidth() const {
     return m_frameWidth;
 }

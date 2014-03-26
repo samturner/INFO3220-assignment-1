@@ -1,8 +1,6 @@
 INFO3220-assignment-1
 =====================
 
-INFO3220 S12014 Assignment 1
-
 ## Extensions
 * Ability to change colour of the ball and background from the configuration file.
 * Ability to pause and restart the program.
