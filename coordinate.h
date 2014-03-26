@@ -6,7 +6,8 @@ class Coordinate
 public:
     Coordinate(unsigned int xCoordinate,
                unsigned int yCoordinate,
-               unsigned int frameHeight);
+               unsigned int frameHeight,
+               unsigned int frameWidth);
 
     int getQtRenderingXCoordinate();
 
@@ -19,11 +20,14 @@ public:
     void setYCoordinateToHeight(int offset);
 
     unsigned int getFrameHeight();
+    unsigned int getFrameWidth();
 
 private:
     unsigned int m_xCoordinate;
     unsigned int m_yCoordinate;
+
     unsigned int m_frameHeight;
+    unsigned int m_frameWidth;
 
 };
 

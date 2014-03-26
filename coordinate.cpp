@@ -2,15 +2,17 @@
 
 Coordinate::Coordinate(unsigned int xCoordinate,
                        unsigned int yCoordinate,
-                       unsigned int frameHeight)
+                       unsigned int frameHeight,
+                       unsigned int frameWidth)
 {
     m_xCoordinate = xCoordinate;
     m_yCoordinate = yCoordinate;
     m_frameHeight = frameHeight;
+    m_frameWidth = frameWidth;
 }
 
 int Coordinate::getQtRenderingXCoordinate() {
-    return m_frameHeight - m_xCoordinate;
+    return m_frameWidth - m_xCoordinate;
 }
 
 int Coordinate::getQtRenderingYCoordinate() {
@@ -35,4 +37,8 @@ void Coordinate::setYCoordinateToHeight(int offset) {
 
 unsigned int Coordinate::getFrameHeight() {
     return m_frameHeight;
+}
+
+unsigned int Coordinate::getFrameWidth() {
+    return m_frameWidth;
 }

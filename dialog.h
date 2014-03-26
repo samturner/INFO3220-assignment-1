@@ -4,13 +4,6 @@
 #include "ball.h"
 #include "configuration.h"
 
-#include <QDialog>
-#include <QTimer>
-#include <QString>
-#include <QStringList>
-#include <QFile>
-#include <QTextStream>
-
 
 namespace Ui {
 class Dialog;
@@ -29,13 +22,12 @@ public:
 
 protected:
     void paintEvent(QPaintEvent *event);
-    configuration readFile();
+//    configuration readFile();
 
 private:
     Ui::Dialog *ui;
     Ball m_ball;
     int m_counter;
-
 };
 
 #endif // DIALOG_H

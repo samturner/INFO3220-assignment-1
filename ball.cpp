@@ -1,15 +1,16 @@
 #include "ball.h"
+#include <QDebug>
 
-Ball::Ball(Coordinate coordinate) : m_coordinate(0,0,0) {
+Ball::Ball(Coordinate coordinate) : m_coordinate(0,0,0,0) {
     m_coordinate = coordinate;
 }
 
-Ball::Ball(Coordinate coordinate, unsigned int radius) : m_coordinate(0,0,0) {
+Ball::Ball(Coordinate coordinate, unsigned int radius) : m_coordinate(0,0,0,0) {
     m_coordinate = coordinate;
     m_radius = radius;
 }
 
-Ball::Ball(Coordinate coordinate, unsigned int radius, double gravity, double xVelocity, double yVelocity, QString color) : m_coordinate(0,0,0) {
+Ball::Ball(Coordinate coordinate, unsigned int radius, double gravity, double xVelocity, double yVelocity, QString color) : m_coordinate(0,0,0,0) {
     m_coordinate = coordinate;
     m_radius = radius;
     m_gravity = gravity;
@@ -32,7 +33,7 @@ bool Ball::isLeftCollision() {
 }
 
 bool Ball::isRightCollision() {
-    return m_coordinate.getQtRenderingXCoordinate() > (signed int) m_coordinate.getFrameHeight() - m_radius;
+    return m_coordinate.getQtRenderingXCoordinate() > (signed int) m_coordinate.getFrameWidth() - m_radius;
 }
 
 bool Ball::isTopCollision() {
@@ -46,9 +47,7 @@ void Ball::render(QPainter &painter, unsigned int time)
     } else if (isRightCollision()) {
         m_xVelocity *= -1;
     } else if (isTopCollision()) {
-        //m_coordinate.setYCoordinateToZero(this->getRadius());
         m_coordinate.setYCoordinateToHeight(this->getRadius());
-        // velocity decreases after hitting the ground
         m_yVelocity *= -1;
     } else if (isBottomCollision()) {
         m_coordinate.setYCoordinateToZero(this->getRadius());

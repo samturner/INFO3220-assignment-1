@@ -1,7 +1,12 @@
 #ifndef CONFIGURATION_H
 #define CONFIGURATION_H
 
-#import <QString>
+#include <QDialog>
+#include <QTimer>
+#include <QString>
+#include <QStringList>
+#include <QFile>
+#include <QTextStream>
 
 class configuration
 {
@@ -13,19 +18,17 @@ public:
                   double m_gravity = 0.0,
                   double m_xVelocity = 0.0,
                   double m_yVelocity = 0.0,
-                  QString m_color = "#F1C93C");
+                  QString m_color = "#F1C93C",
+                  unsigned int m_windowHeight = 0,
+                  unsigned int m_windowWidth = 0);
 
-    void setXCoordinate(unsigned int xCoordinate);
-    void setYCoordinate(unsigned int yCoordinate);
-    void setConfigEntered(bool configEntered);
-    void setRadius(unsigned int radius);
-    void setGravity(double gravity);
-    void setXVelocity(double xVelocity);
-    void setYVelocity(double yVelocity);
-    void setColor(QString color);
+    bool readConfigFile();
+    bool validateConfig();
 
     unsigned int getXCoordinate();
     unsigned int getYCoordinate();
+    unsigned int getWindowHeight();
+    unsigned int getWindowWidth();
     double getXVelocity();
     double getYVelocity();
     unsigned int getRadius();
@@ -39,6 +42,9 @@ private:
     unsigned int m_radius;
     unsigned int m_xVelocity;
     unsigned int m_yVelocity;
+
+    unsigned int m_windowHeight;
+    unsigned int m_windowWidth;
 
     double m_gravity;
 

@@ -1,23 +1,23 @@
 #include "dialog.h"
 #include "ui_dialog.h"
-
 #include <QDebug>
-
 
 Dialog::Dialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Dialog),
-    m_ball(Ball(Coordinate(100, 100, 500), 20, -9.8,4.5, 10,"#F1C93C")),      // default values for the ball
+    m_ball(Ball(Coordinate(0, 0, 0, 0), 0, 0, 0, 0,"#FFFFFF")),      // if there is no config files
     m_counter(0)
 {
-
-    configuration config = this->readFile();
-    if (config.getConfigEntered()) { // if we read the file in correctly
-        m_ball = Ball(Coordinate(config.getXCoordinate() + config.getRadius(), config.getYCoordinate() + config.getRadius(), 500), config.getRadius(), config.getGravity(), config.getXVelocity(), config.getYVelocity(), config.getColor());
+    configuration config;
+    if (config.readConfigFile()) { // if we read the file in correctly, use the options from the file
+        m_ball = Ball(Coordinate(config.getXCoordinate() + config.getRadius(), config.getYCoordinate() + config.getRadius(), config.getWindowHeight(), config.getWindowWidth()), config.getRadius(), config.getGravity(), config.getXVelocity(), config.getYVelocity(), config.getColor());
     }
 
     ui->setupUi(this);
-    this->resize(500, 500);
+
+//    qDebug() << "WIDTH: " << config.getWindowWidth() << ", HEIGHT: " << config.getWindowHeight();
+
+    this->resize(config.getWindowWidth(), config.getWindowHeight());
     this->setStyleSheet("background-color: #31B94D;");
 
     QTimer *timer = new QTimer(this);
@@ -25,43 +25,49 @@ Dialog::Dialog(QWidget *parent) :
     timer->start(32);
 }
 
-configuration Dialog::readFile() {
+//configuration Dialog::readFile() {
 
-    QFile inputFile("/.config");        // The config file location
+//    QFile inputFile("config.txt");        // The config file location
+//    configuration config;                       // A new configuration object
 
-     if (inputFile.open(QIODevice::ReadOnly)) {
-        QTextStream configFile(&inputFile);         // Open the file
+//     if (inputFile.open(QIODevice::ReadOnly)) {
+//        qDebug() << "FILE OPENED!";
+//        QTextStream configFile(&inputFile);         // Open the file
 
-        configuration config;                       // A new configuration object
-        config.setConfigEntered(true);              // Tell the configuration that we've opened a file
+//        config.setConfigEntered(true);              // Tell the configuration that we've opened a file
 
-        while (!configFile.atEnd()) {               // If we're not at the end of a file
-           QStringList opt = configFile.readLine().split(':');   // Read the line in and split on colon
+//        while (!configFile.atEnd()) {               // If we're not at the end of a file
+//           QStringList opt = configFile.readLine().split(':');   // Read the line in and split on colon
 
-           if (opt[0] == "Radius") {
-               config.setRadius(opt[1].toInt());
-           } else if (opt[0] == "InitialX") {
-               config.setXCoordinate(opt[1].toInt());
-           } else if (opt[0] == "InitialY") {
-               config.setYCoordinate(opt[1].toInt());
-           } else if (opt[0] == "Gravity") {
-               config.setGravity(opt[1].toDouble());
-           } else if (opt[0] == "XVelocity") {
-               config.setXVelocity(opt[1].toDouble());
-           } else if (opt[0] == "YVelocity") {
-               config.setYVelocity(opt[1].toDouble());
-           } else if (opt[0] == "Color") {
-               config.setColor(opt[1]);
-           }
-        }
+//           if (opt[0] == "Radius") {
+//               config.setRadius(opt[1].toInt());
+//           } else if (opt[0] == "InitialX") {
+//               config.setXCoordinate(opt[1].toInt());
+//           } else if (opt[0] == "InitialY") {
+//               config.setYCoordinate(opt[1].toInt());
+//           } else if (opt[0] == "Gravity") {
+//               config.setGravity(opt[1].toDouble());
+//           } else if (opt[0] == "XVelocity") {
+//               config.setXVelocity(opt[1].toDouble());
+//           } else if (opt[0] == "YVelocity") {
+//               config.setYVelocity(opt[1].toDouble());
+//           } else if (opt[0] == "Color") {
+//               config.setColor(opt[1]);
+//           } else if (opt[0] == "WindowHeight") {
+//               config.setWindowHeight(opt[1].toInt());
+//           } else if (opt[0] == "WindowWidth") {
+//               config.setWindowWidth(opt[1].toInt());
+//           }
+//        }
 
-        inputFile.close();      // Close the file
-        return config;
-     } else {
-         // TODO: Handle this error, file cannot be opened
-         return false;
-     }
-}
+//        inputFile.close();      // Close the file
+//     } else {
+//         config.setConfigEntered(false);
+//         qDebug() << "COULD NOT OPEN FILE!";
+//     }
+
+//     return config;
+//}
 
 Dialog::~Dialog()
 {
