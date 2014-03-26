@@ -16,7 +16,6 @@ public:
 
     Ball(Coordinate coordinate,
          unsigned int radius,
-         double gravity,
          double xVelocity,
          double yVelocity,
          QString color);
@@ -35,7 +34,6 @@ public:
 private:
     Coordinate m_coordinate;
     unsigned int m_radius;
-    double m_gravity;
     double m_xVelocity;
     double m_yVelocity;
 

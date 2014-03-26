@@ -4,7 +4,6 @@
 #include "ball.h"
 #include "configuration.h"
 
-
 namespace Ui {
 class Dialog;
 }
@@ -27,6 +26,7 @@ protected:
 private:
     Ui::Dialog *ui;
     Ball m_ball;
+    configuration m_config;
     int m_counter;
 };
 

@@ -1,4 +1,4 @@
-Radius: 20
+Radius: 60
 InitialX: 100
 InitialY: 100
 Gravity: -1.3

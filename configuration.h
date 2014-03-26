@@ -11,18 +11,14 @@
 class configuration
 {
 public:
-    configuration(unsigned int m_xCoordinate = 0,
-                  unsigned int m_yCoordinate = 0,
-                  unsigned int m_radius = 0,
-                  bool m_configEntered = false,
-                  double m_gravity = 0.0,
-                  double m_xVelocity = 0.0,
-                  double m_yVelocity = 0.0,
+    configuration(unsigned int m_xCoordinate = 100,
+                  unsigned int m_yCoordinate = 100,
+                  unsigned int m_radius = 20,
+                  double m_xVelocity = 5.6,
+                  double m_yVelocity = 7.4,
                   QString m_color = "#F1C93C",
-                  unsigned int m_windowHeight = 0,
-                  unsigned int m_windowWidth = 0);
-
-    bool readConfigFile();
+                  unsigned int m_windowHeight = 500,
+                  unsigned int m_windowWidth = 500);
 
     unsigned int getXCoordinate();
     unsigned int getYCoordinate();
@@ -31,8 +27,6 @@ public:
     double getXVelocity();
     double getYVelocity();
     unsigned int getRadius();
-    double getGravity();
-    bool getConfigEntered();
     QString getColor();
 
 private:
@@ -45,11 +39,7 @@ private:
     unsigned int m_windowHeight;
     unsigned int m_windowWidth;
 
-    double m_gravity;
-
     QString m_color;
-
-    bool m_configEntered;
 };
 
 #endif // CONFIGURATION_H

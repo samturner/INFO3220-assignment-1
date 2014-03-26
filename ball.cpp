@@ -10,10 +10,9 @@ Ball::Ball(Coordinate coordinate, unsigned int radius) : m_coordinate(0,0,0,0) {
     m_radius = radius;
 }
 
-Ball::Ball(Coordinate coordinate, unsigned int radius, double gravity, double xVelocity, double yVelocity, QString color) : m_coordinate(0,0,0,0) {
+Ball::Ball(Coordinate coordinate, unsigned int radius, double xVelocity, double yVelocity, QString color) : m_coordinate(0,0,0,0) {
     m_coordinate = coordinate;
     m_radius = radius;
-    m_gravity = gravity;
     m_xVelocity = xVelocity;
     m_yVelocity = yVelocity;
     m_color = color;
@@ -61,7 +60,6 @@ void Ball::render(QPainter &painter, unsigned int time)
         m_coordinate.getQtRenderingYCoordinate() -(int) m_radius,
         m_radius * 2,
         m_radius * 2);
-   //m_yVelocity += m_gravity / 32.0;
     m_coordinate.changeInXCoordinate(m_xVelocity);
     m_coordinate.changeInYCoordinate(m_yVelocity);
 }

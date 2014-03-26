@@ -1,19 +1,15 @@
 #include "configuration.h"
 
-configuration::configuration(unsigned int xCoordinate, unsigned int yCoordinate, unsigned int radius, bool configEntered, double gravity, double xVelocity, double yVelocity, QString color, unsigned int windowHeight, unsigned int windowWidth) {
+configuration::configuration(unsigned int xCoordinate, unsigned int yCoordinate, unsigned int radius, double xVelocity, double yVelocity, QString color, unsigned int windowHeight, unsigned int windowWidth) {
     m_xCoordinate = xCoordinate;
     m_yCoordinate = yCoordinate;
     m_radius = radius;
-    m_configEntered = configEntered,
-    m_gravity = gravity,
-    m_xVelocity = xVelocity,
+    m_xVelocity = xVelocity;
     m_yVelocity = yVelocity;
     m_color = color;
     m_windowHeight = windowHeight;
     m_windowWidth = windowWidth;
-}
 
-bool configuration::readConfigFile() {
     QFile inputFile("config.txt");        // The config file location
 
      if (inputFile.open(QIODevice::ReadOnly)) {
@@ -28,8 +24,6 @@ bool configuration::readConfigFile() {
                m_xCoordinate = opt[1].toInt();
            } else if (opt[0] == "InitialY") {
                m_yCoordinate = opt[1].toInt();
-           } else if (opt[0] == "Gravity") {
-               m_gravity = opt[1].toDouble();
            } else if (opt[0] == "XVelocity") {
                m_xVelocity = opt[1].toDouble();
            } else if (opt[0] == "YVelocity") {
@@ -44,9 +38,6 @@ bool configuration::readConfigFile() {
         }
 
         inputFile.close();      // Close the file
-        return true;
-     } else {
-         return false;
      }
 }
 
@@ -70,20 +61,12 @@ unsigned int configuration::getRadius() {
     return m_radius;
 }
 
-double configuration::getGravity() {
-    return m_gravity;
-}
-
 double configuration::getXVelocity() {
     return m_xVelocity;
 }
 
 double configuration::getYVelocity() {
     return m_yVelocity;
-}
-
-bool configuration::getConfigEntered() {
-    return m_configEntered;
 }
 
 QString configuration::getColor() {
