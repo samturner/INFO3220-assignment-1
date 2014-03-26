@@ -23,7 +23,6 @@ public:
                   unsigned int m_windowWidth = 0);
 
     bool readConfigFile();
-    bool validateConfig();
 
     unsigned int getXCoordinate();
     unsigned int getYCoordinate();

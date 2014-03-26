@@ -3,6 +3,24 @@ INFO3220-assignment-1
 
 INFO3220 S12014 Assignment 1
 
+## Extensions
+* Ability to change colour of the ball and background from the configuration file.
+* Ability to pause and restart the program.
+
+## Configuration Format
+* The `config.txt` file is used to set parameters within the program, the available parameters are as follows:
+	* **Radius** `int` - The radius of the ball
+	* **InitialX** `int` - The initial X position of the ball.
+	* **InitialY** `int` - The initial Y position of the ball.
+	* **xVelocity** `double` - How quickly the ball moves across the X plane.
+	* **yVelocity** `double` - How quickly the ball moves across the Y plane.
+	* **Color** `string` - The colour of the ball.
+	* **WindowHeight** `int` - The height of the window.
+	* **WindowWidth** `int` - The width of the window.
+
+
+* If any of these fields are missing, they are set to a default value.
+
 
 ## Marking Criteria
 

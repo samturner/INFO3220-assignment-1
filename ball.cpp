@@ -29,7 +29,7 @@ bool Ball::isBottomCollision() {
 }
 
 bool Ball::isLeftCollision() {
-    return m_coordinate.getQtRenderingXCoordinate() - (signed int) m_radius <= 0;   // If x is less than or equal to zero
+    return m_coordinate.getQtRenderingXCoordinate() - (signed int) m_radius < 0;   // If x is less than or equal to zero
 }
 
 bool Ball::isRightCollision() {

@@ -1,2 +1,6 @@
 Makefile
 .qmake.stash
+*.o
+*.app
+moc_dialog.cpp
+ui_dialog.h
