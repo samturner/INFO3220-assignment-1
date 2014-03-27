@@ -42,6 +42,8 @@ configuration::configuration(unsigned int xCoordinate, unsigned int yCoordinate,
      }
 }
 
+configuration::~configuration(){}
+
 unsigned int configuration::getWindowHeight() const {
     return m_windowHeight;
 }

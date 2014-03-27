@@ -9,6 +9,8 @@ public:
                unsigned int frameHeight,
                unsigned int frameWidth);
 
+    ~Coordinate();
+
     int getQtRenderingXCoordinate() const;
 
     int getQtRenderingYCoordinate() const;

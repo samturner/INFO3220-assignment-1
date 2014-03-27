@@ -21,6 +21,8 @@ public:
                   unsigned int m_windowHeight = 500,
                   unsigned int m_windowWidth = 500);
 
+    ~configuration();
+
     unsigned int getXCoordinate() const;
     unsigned int getYCoordinate() const;
     unsigned int getWindowHeight() const;

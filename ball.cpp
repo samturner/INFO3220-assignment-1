@@ -18,6 +18,8 @@ Ball::Ball(Coordinate coordinate, unsigned int radius, double xVelocity, double 
     m_color = color;
 }
 
+Ball::~Ball() {}
+
 unsigned int Ball::getRadius() const {
     return m_radius;
 }
@@ -62,5 +64,7 @@ void Ball::render(QPainter &painter, unsigned int time)
         m_radius * 2);
     m_coordinate.changeInXCoordinate(m_xVelocity);
     m_coordinate.changeInYCoordinate(m_yVelocity);
+
+   //qDebug() << "X VELOCITY: [" << m_xVelocity << "] Y VELOCITY: [" << m_yVelocity << "]";
 }
 

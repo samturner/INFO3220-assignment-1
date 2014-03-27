@@ -11,6 +11,8 @@ Coordinate::Coordinate(unsigned int xCoordinate,
     m_frameWidth = frameWidth;
 }
 
+Coordinate::~Coordinate(){};
+
 int Coordinate::getQtRenderingXCoordinate() const {
     return m_frameWidth - m_xCoordinate;
 }
