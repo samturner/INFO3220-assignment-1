@@ -17,7 +17,8 @@ public:
                   unsigned int m_radius = 20,
                   double m_xVelocity = 5.6,
                   double m_yVelocity = 7.4,
-                  QString m_color = "#F1C93C",
+                  QString m_ballColor = "#F1C93C",
+                  QString m_backgroundColor = "#232323",
                   unsigned int m_windowHeight = 500,
                   unsigned int m_windowWidth = 500);
 
@@ -30,7 +31,8 @@ public:
     double getXVelocity() const;
     double getYVelocity() const;
     unsigned int getRadius() const;
-    QString getColor() const;
+    QString getBallColor() const;
+    QString getBackgroundColor() const;
 
 private:
     unsigned int m_xCoordinate;
@@ -42,7 +44,8 @@ private:
     unsigned int m_windowHeight;
     unsigned int m_windowWidth;
 
-    QString m_color;
+    QString m_ballColor;
+    QString m_backgroundColor;
 };
 
 #endif // CONFIGURATION_H

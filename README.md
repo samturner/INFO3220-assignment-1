@@ -12,7 +12,8 @@ INFO3220 Assignment 1
 	* **InitialY** `int` - The initial Y position of the ball.
 	* **xVelocity** `double` - How quickly the ball moves across the X plane.
 	* **yVelocity** `double` - How quickly the ball moves across the Y plane.
-	* **Color** `string` - The colour of the ball.
+	* **BackgroundColor** `string` - The background colour of the dialog.
+	* **BallColor** `string` - The colour of the ball.
 	* **WindowHeight** `int` - The height of the window.
 	* **WindowWidth** `int` - The width of the window.
 

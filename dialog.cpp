@@ -17,13 +17,13 @@ Dialog::Dialog(QWidget *parent) :
     connect(m_pauseButton, SIGNAL(released()), this, SLOT(handlePause()));
 
     // create the ball, getting the values from the configuration class
-    m_ball = Ball(Coordinate(m_config.getXCoordinate() + m_config.getRadius(), m_config.getYCoordinate() + m_config.getRadius(), m_config.getWindowHeight(), m_config.getWindowWidth()), m_config.getRadius(), m_config.getXVelocity(), m_config.getYVelocity(), m_config.getColor());
+    m_ball = Ball(Coordinate(m_config.getXCoordinate() + m_config.getRadius(), m_config.getYCoordinate() + m_config.getRadius(), m_config.getWindowHeight(), m_config.getWindowWidth()), m_config.getRadius(), m_config.getXVelocity(), m_config.getYVelocity(), m_config.getBallColor());
 
     ui->setupUi(this);
 
     // set the size of the window from the configuration class
     this->resize(m_config.getWindowWidth(), m_config.getWindowHeight());
-    this->setStyleSheet("background-color: #31B94D;");
+    this->setStyleSheet("background-color: " + m_config.getBackgroundColor() + ";");
 
     m_timer = new QTimer(this);
     connect(m_timer, SIGNAL(timeout()), this, SLOT(nextFrame()));   // connect the timer

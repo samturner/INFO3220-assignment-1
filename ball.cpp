@@ -64,7 +64,5 @@ void Ball::render(QPainter &painter, unsigned int time)
         m_radius * 2);
     m_coordinate.changeInXCoordinate(m_xVelocity);
     m_coordinate.changeInYCoordinate(m_yVelocity);
-
-   //qDebug() << "X VELOCITY: [" << m_xVelocity << "] Y VELOCITY: [" << m_yVelocity << "]";
 }
 

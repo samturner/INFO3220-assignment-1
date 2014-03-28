@@ -1,18 +1,20 @@
 #include "configuration.h"
 
-configuration::configuration(unsigned int xCoordinate, unsigned int yCoordinate, unsigned int radius, double xVelocity, double yVelocity, QString color, unsigned int windowHeight, unsigned int windowWidth) {
+configuration::configuration(unsigned int xCoordinate, unsigned int yCoordinate, unsigned int radius, double xVelocity, double yVelocity, QString ballColor, QString backgroundColor, unsigned int windowHeight, unsigned int windowWidth) {
     m_xCoordinate = xCoordinate;
     m_yCoordinate = yCoordinate;
     m_radius = radius;
     m_xVelocity = xVelocity;
     m_yVelocity = yVelocity;
-    m_color = color;
+    m_ballColor = ballColor;
+    m_backgroundColor = backgroundColor;
     m_windowHeight = windowHeight;
     m_windowWidth = windowWidth;
 
     QFile inputFile("config.txt");        // The config file location
 
      if (inputFile.open(QIODevice::ReadOnly)) {
+
         QTextStream configFile(&inputFile);
 
         while (!configFile.atEnd()) {               // If we're not at the end of a file
@@ -29,8 +31,10 @@ configuration::configuration(unsigned int xCoordinate, unsigned int yCoordinate,
                m_xVelocity = opt[1].toDouble();
            } else if (setting == "YVelocity") {
                m_yVelocity = opt[1].toDouble();
-           } else if (setting == "Color") {
-               m_color = opt[1];
+           } else if (setting == "BallColor") {
+               m_ballColor = opt[1];
+           } else if (setting == "BackgroundColor") {
+               m_backgroundColor = opt[1];
            } else if (setting == "WindowHeight") {
                m_windowHeight = opt[1].toInt();
            } else if (setting == "WindowWidth") {
@@ -72,6 +76,10 @@ double configuration::getYVelocity() const {
     return m_yVelocity;
 }
 
-QString configuration::getColor() const {
-    return m_color;
+QString configuration::getBallColor() const {
+    return m_ballColor;
+}
+
+QString configuration::getBackgroundColor() const {
+    return m_backgroundColor;
 }

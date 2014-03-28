@@ -1,8 +1,9 @@
 Radius : 40
 InitialX: 100
 InitialY: 100
-XVelocity: 1
+XVelocity: 50
 YVelocity: 10
-Color:#47629C
+BallColor:#47629C
+BackgroundColor:#C8BE9C
 WindowHeight: 600
 WindowWidth: 600
