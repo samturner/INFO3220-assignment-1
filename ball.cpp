@@ -1,5 +1,4 @@
 #include "ball.h"
-#include <QDebug>
 
 Ball::Ball(Coordinate coordinate) : m_coordinate(0,0,0,0) {
     m_coordinate = coordinate;

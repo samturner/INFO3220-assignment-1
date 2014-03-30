@@ -1,6 +1,5 @@
 #include "dialog.h"
 #include "ui_dialog.h"
-#include <QDebug>
 
 Dialog::Dialog(QWidget *parent) :
     QDialog(parent),
@@ -12,6 +11,8 @@ Dialog::Dialog(QWidget *parent) :
     QWidget * wdg = new QWidget(this);
     wdg->resize(150,46);
     wdg->setStyleSheet("background-color: #FFFFFF;");
+
+    // Create and connect the pause button
     m_pauseButton = new QPushButton(wdg);
     m_pauseButton->setText(tr("Pause"));
     connect(m_pauseButton, SIGNAL(released()), this, SLOT(handlePause()));

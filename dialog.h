@@ -1,9 +1,10 @@
 #ifndef DIALOG_H
 #define DIALOG_H
 
-#include <QPushButton>
 #include "ball.h"
 #include "configuration.h"
+
+#include <QPushButton>
 
 namespace Ui {
 class Dialog;
